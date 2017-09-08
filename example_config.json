@@ -1,0 +1,17 @@
+{
+    "skipextension": "part",
+    "matches": [
+        {
+            "regex": "Arrow",
+            "destination": "/home/MINDFLAVOR/mindflavor/mainpool/shared/shows/Arrow"
+        },
+        {
+            "regex": "Big.Bang",
+            "destination": "/home/MINDFLAVOR/mindflavor/mainpool/shared/shows/The.big.bang.theory"
+        },
+        {
+            "regex": "Marvels.Agents.of.S.H.I.E.L.D.*",
+            "destination": "/home/MINDFLAVOR/mindflavor/mainpool/shared/shows/agents_of_the_shield"
+        }
+    ]
+}
