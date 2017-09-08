@@ -70,7 +70,7 @@ The ```matches``` section is an array of entries you want to check. Each entry m
 
 While TORMOV does not have a scheduler it's fairly easy to automate it with cron jobs or systemd. For example with systemd you can schedule it creating two files. The first is ```tormov.service``` with these contents:
 
-```toml
+```
 
 [Unit]
 Description=TORrent MOVer
@@ -82,7 +82,7 @@ ExecStart=<full TORMOV bin path> <config> <folder>
 
 And another one called ```tormow.timer``` with the schedule:
 
-```toml
+```
 
 [Unit]
 Description=Runs tormov every minute
