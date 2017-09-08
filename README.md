@@ -16,7 +16,7 @@ The program is written in Rust so it's very quick and light on your system. The 
 
 1. Make sure to have Rust installed. Grab it here [https://www.rust-lang.org/en-US/](https://www.rust-lang.org/en-US/) if you don't have it. This program is tested with rustc 1.22.0-nightly (2f1ef9ef1 2017-09-05) but it should work with others versions too (I'm too lazy to test it myself, sorry :smile: ).
 1. Install the tool with ```cargo install --git https://github.com/MindFlavor/tormov```.
-1. type ```tormov``` in the console to test the program execution. You'll get an error because of missing parameters. We'll cover them in the next session.
+1. type ```tormov``` in the console to test the program execution. You'll get an error because of missing parameters. We'll cover them in the next section.
 
 ## Parameters
 
