@@ -37,7 +37,7 @@ fn scan_first_level(config: &Config, folder: &str) -> Result<(), std::io::Error>
 
         if let Some(file) = path.to_str() {
             if path.is_file() {
-                if let Some(m) = matches(&file, config) {
+                if let Some(m) = matches(file, config) {
                     if extension_matches(config, path) {
                         println!("\tfile skipped: extension matches the incomplete one");
                     } else {
@@ -51,23 +51,19 @@ fn scan_first_level(config: &Config, folder: &str) -> Result<(), std::io::Error>
                 } else {
                     println!("\tfile does not match any Match. Ignoring");
                 }
-            } else {
-                // folder
-                // first make sure it is a folder to manage
-                if let Some(m) = matches(&file, config) {
-                    if scan_for_incomplete(config, file)? {
-                        println!("\tfolder skipped due to incomplete file found");
-                    } else {
-                        let mut pb = std::path::PathBuf::new();
-                        pb.push(&m.destination);
-                        pb.push(path.file_name().unwrap());
-
-                        println!("\tmove as {:?}", pb.as_path());
-                        std::fs::rename(file, pb).expect("Cannot move folder");
-                    }
+            } else if let Some(m) = matches(file, config) {
+                if scan_for_incomplete(config, file)? {
+                    println!("\tfolder skipped due to incomplete file found");
                 } else {
-                    println!("\tfolder does not match any Match. Ignoring");
+                    let mut pb = std::path::PathBuf::new();
+                    pb.push(&m.destination);
+                    pb.push(path.file_name().unwrap());
+
+                    println!("\tmove as {:?}", pb.as_path());
+                    std::fs::rename(file, pb).expect("Cannot move folder");
                 }
+            } else {
+                println!("\tfolder does not match any Match. Ignoring");
             }
         } else {
             panic!("cannot read path from file");
@@ -100,11 +96,9 @@ fn scan_for_incomplete(config: &Config, folder: &str) -> Result<bool, std::io::E
             if extension_matches(config, path) {
                 return Ok(true);
             }
-        } else {
-            if let Some(inner_path) = path.to_str() {
-                if scan_for_incomplete(config, inner_path)? {
-                    return Ok(true);
-                }
+        } else if let Some(inner_path) = path.to_str() {
+            if scan_for_incomplete(config, inner_path)? {
+                return Ok(true);
             }
         }
     }
@@ -115,7 +109,7 @@ fn scan_for_incomplete(config: &Config, folder: &str) -> Result<bool, std::io::E
 fn extension_matches(config: &Config, path: &std::path::Path) -> bool {
     if let Some(ext) = path.extension() {
         if let Some(ext) = ext.to_str() {
-            if ext == &config.skipextension {
+            if ext == config.skipextension {
                 return true;
             }
         }
