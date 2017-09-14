@@ -1,5 +1,11 @@
 # TORMOV
 
+[![Crate](https://img.shields.io/crates/v/tormov.svg)](https://crates.io/crates/tormov) [![legal](https://img.shields.io/crates/l/tormov.svg)](LICENSE) [![cratedown](https://img.shields.io/crates/d/tormov.svg)](https://crates.io/crates/tormov) [![cratelastdown](https://img.shields.io/crates/dv/tormov.svg)](https://crates.io/crates/tormov)
+
+[![tag](https://img.shields.io/github/tag/mindflavor/tormov.svg)](https://github.com/MindFlavor/tormov/tree/0.1.1)
+[![release](https://img.shields.io/github/release/mindflavor/tormov.svg)](https://github.com/MindFlavor/tormov/tree/0.1.1)
+[![commitssince](https://img.shields.io/github/commits-since/mindflavor/tormov/0.1.1.svg)](https://img.shields.io/github/commits-since/mindflavor/tormov/0.1.1.svg)
+
 ## TORrentMOVer
 
 Simple script program to move completed torrents to specific folders.
@@ -15,7 +21,8 @@ The program is written in Rust so it's very quick and light on your system. The 
 ## Installation
 
 1. Make sure to have Rust installed. Grab it here [https://www.rust-lang.org/en-US/](https://www.rust-lang.org/en-US/) if you don't have it. This program is tested with rustc 1.22.0-nightly (2f1ef9ef1 2017-09-05) but it should work with others versions too (I'm too lazy to test it myself, sorry :smile: ).
-1. Install the tool with ```cargo install --git https://github.com/MindFlavor/tormov```.
+1. Install the tool with ```cargo install tormov```. This will install the latest published version. If you want the master branch use ```cargo install --git https://github.com/MindFlavor/tormov``` instead.
+
 1. type ```tormov``` in the console to test the program execution. You'll get an error because of missing parameters. We'll cover them in the next section.
 
 ## Parameters
