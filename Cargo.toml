@@ -1,7 +1,9 @@
 [package]
-name = "tormov"
-version = "0.1.1"
-authors = ["Francesco Cogno <francesco.cogno@outlook.com>"]
+name        = "tormov"
+description = "TORrent MOVer, a simple tool to move regexed folders with no incomplete files"
+version     = "0.1.1"
+authors     = ["Francesco Cogno <francesco.cogno@outlook.com>"]
+license     = "MIT"
 
 [dependencies]
 regex        = "0.2.2"
