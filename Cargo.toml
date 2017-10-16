@@ -8,7 +8,7 @@ repository     = "https://github.com/MindFlavor/tormov"
 documentation  = "https://github.com/MindFlavor/tormov"
 homepage       = "https://github.com/MindFlavor/tormov"
 
-keywords       = ["torrent", "file", "symbolic link"]
+keywords       = ["torrent", "file", "symlink"]
 categories     = ["Command line utilities"]
 
 
