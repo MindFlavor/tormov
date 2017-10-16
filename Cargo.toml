@@ -1,15 +1,15 @@
 [package]
-name        = "tormov"
-description = "TORrent MOVer, a simple tool to move regexed folders with no incomplete files"
-version     = "0.2.1"
-authors     = ["Francesco Cogno <francesco.cogno@outlook.com>"]
-license     = "MIT"
-repository     = "https://github.com/MindFlavor/tormov"
-documentation  = "https://github.com/MindFlavor/tormov"
-homepage       = "https://github.com/MindFlavor/tormov"
+name          = "tormov"
+description   = "TORrent MOVer, a simple tool to move (or link) regexed folders with no incomplete files"
+version       = "0.2.2"
+authors       = ["Francesco Cogno <francesco.cogno@outlook.com>"]
+license       = "MIT"
+repository    = "https://github.com/MindFlavor/tormov"
+documentation = "https://github.com/MindFlavor/tormov/blob/master/README.md"
+homepage      = "https://mindflavor.github.io/tormov"
 
-keywords       = ["torrent", "file", "symlink"]
-categories     = ["Command line utilities"]
+keywords      = ["torrent", "file", "symlink"]
+categories    = ["command-line-utilities"]
 
 
 [dependencies]
