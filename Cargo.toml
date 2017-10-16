@@ -4,6 +4,13 @@ description = "TORrent MOVer, a simple tool to move regexed folders with no inco
 version     = "0.2.0"
 authors     = ["Francesco Cogno <francesco.cogno@outlook.com>"]
 license     = "MIT"
+repository     = "https://github.com/MindFlavor/tormov"
+documentation  = "https://github.com/MindFlavor/tormov"
+homepage       = "https://github.com/MindFlavor/tormov"
+
+keywords       = ["torrent", "file", "symbolic link"]
+categories     = ["Command line utilities"]
+
 
 [dependencies]
 regex        = "0.2.2"
