@@ -3,15 +3,18 @@
     "matches": [
         {
             "regex": "Arrow",
-            "destination": "/home/MINDFLAVOR/mindflavor/mainpool/shared/shows/Arrow"
+            "destination": "/mnt/shows/Arrow",
+	    "action": "Move"
         },
         {
             "regex": "Big.Bang",
-            "destination": "/home/MINDFLAVOR/mindflavor/mainpool/shared/shows/The.big.bang.theory"
+            "destination": "/mnt/shows/The.big.bang.theory",
+	    "action": "Move"
         },
         {
             "regex": "Marvels.Agents.of.S.H.I.E.L.D.*",
-            "destination": "/home/MINDFLAVOR/mindflavor/mainpool/shared/shows/agents_of_the_shield"
+            "destination": "/mnt/shows/agents_of_the_shield",
+	    "action": "Link"
         }
     ]
 }

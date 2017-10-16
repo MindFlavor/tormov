@@ -4,9 +4,9 @@
 
 [![Crate](https://img.shields.io/crates/v/tormov.svg)](https://crates.io/crates/tormov)  [![cratedown](https://img.shields.io/crates/d/tormov.svg)](https://crates.io/crates/tormov) [![cratelastdown](https://img.shields.io/crates/dv/tormov.svg)](https://crates.io/crates/tormov)
 
-[![tag](https://img.shields.io/github/tag/mindflavor/tormov.svg)](https://github.com/MindFlavor/tormov/tree/v0.1.1)
-[![release](https://img.shields.io/github/release/mindflavor/tormov.svg)](https://github.com/MindFlavor/tormov/tree/v0.1.1)
-[![commitssince](https://img.shields.io/github/commits-since/mindflavor/tormov/v0.1.1.svg)](https://img.shields.io/github/commits-since/mindflavor/tormov/v0.1.1.svg)
+[![tag](https://img.shields.io/github/tag/mindflavor/tormov.svg)](https://github.com/MindFlavor/tormov/tree/v0.2.0)
+[![release](https://img.shields.io/github/release/mindflavor/tormov.svg)](https://github.com/MindFlavor/tormov/tree/v0.2.0)
+[![commitssince](https://img.shields.io/github/commits-since/mindflavor/tormov/v0.2.0.svg)](https://img.shields.io/github/commits-since/mindflavor/tormov/v0.2.0.svg)
 
 ## TORrentMOVer
 
@@ -16,15 +16,14 @@ Sometimes it's easy to let torrent download files to a generic directory and the
 
 1. Looking for RegEx patterns in the folder. You can specify exactly which folder/file to handle.
 1. Checking if the downloads are completed. Every file (if there are more than one) must be completed.
-1. Moving the file/folder to the designated directory.
+1. Moving or linking the file/folder to the designated directory.
 
 The program is written in Rust so it's very quick and light on your system. The source code is very small so you can check yourself what it does in few moments.
 
 ## Installation
 
-1. Make sure to have Rust installed. Grab it here [https://www.rust-lang.org/en-US/](https://www.rust-lang.org/en-US/) if you don't have it. This program is tested with rustc 1.22.0-nightly (2f1ef9ef1 2017-09-05) but it should work with others versions too (I'm too lazy to test it myself, sorry :smile: ).
+1. Make sure to have Rust installed. Grab it here [https://www.rust-lang.org/en-US/](https://www.rust-lang.org/en-US/) if you don't have it. This program is tested with rustc nightly but it should work with others versions too (I'm too lazy to test it myself, sorry :smile: ).
 1. Install the tool with ```cargo install tormov```. This will install the latest published version. If you want the master branch use ```cargo install --git https://github.com/MindFlavor/tormov``` instead.
-
 1. type ```tormov``` in the console to test the program execution. You'll get an error because of missing parameters. We'll cover them in the next section.
 
 ## Parameters
@@ -50,15 +49,18 @@ A sample configuration file is available here: [example_config.json](https://git
     "matches": [
         {
             "regex": "Arrow",
-            "destination": "/home/MINDFLAVOR/mindflavor/mainpool/shared/shows/Arrow"
+            "destination": "/mnt/shows/Arrow",
+	    "action": "Move"
         },
         {
             "regex": "Big.Bang",
-            "destination": "/home/MINDFLAVOR/mindflavor/mainpool/shared/shows/The.big.bang.theory"
+            "destination": "/mnt/shows/The.big.bang.theory",
+	    "action": "Move"
         },
         {
             "regex": "Marvels.Agents.of.S.H.I.E.L.D.*",
-            "destination": "/home/MINDFLAVOR/mindflavor/mainpool/shared/shows/agents_of_the_shield"
+            "destination": "/mnt/shows/agents_of_the_shield",
+	    "action": "Link"
         }
     ]
 }
@@ -74,6 +76,7 @@ The ```matches``` section is an array of entries you want to check. Each entry m
 
 1. A regular expression to match in the field ```regex```.
 1. A destination in the ```destination``` field. The destination is where the file/folder will be moved if the contents have been completely downloaded (that is, there is no file with ```skipextension``` anywhere in the folder).
+1. An action to perform in case all the rules match. The supported actions are ```Move``` or ```Link```. The latter will create a symbolic link instead of moving the file. *Note*: right now linking is supported only on Linux, if you need Windows please drop a line.
 
 ## Scheduling
 
