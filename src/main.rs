@@ -5,11 +5,12 @@ extern crate serde_json;
 extern crate regex;
 
 use std::fs;
+use std::path::Path;
 use regex::Regex;
 use std::env;
 
 pub mod config;
-use config::{Config, Match};
+use config::{Action, Config, Match};
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -27,6 +28,7 @@ fn main() {
 
     scan_first_level(&config, folder).unwrap();
 }
+
 
 fn scan_first_level(config: &Config, folder: &str) -> Result<(), std::io::Error> {
     for de_ in fs::read_dir(folder)? {
@@ -46,7 +48,7 @@ fn scan_first_level(config: &Config, folder: &str) -> Result<(), std::io::Error>
                         pb.push(path.file_name().unwrap());
 
                         println!("\tmove as {:?}", pb.as_path());
-                        std::fs::rename(file, pb).expect("Cannot move file");
+                        process_file(file, pb, m).expect("Cannot move file");
                     }
                 } else {
                     println!("\tfile does not match any Match. Ignoring");
@@ -60,7 +62,7 @@ fn scan_first_level(config: &Config, folder: &str) -> Result<(), std::io::Error>
                     pb.push(path.file_name().unwrap());
 
                     println!("\tmove as {:?}", pb.as_path());
-                    std::fs::rename(file, pb).expect("Cannot move folder");
+                    process_file(file, pb, m).expect("Cannot move folder");
                 }
             } else {
                 println!("\tfolder does not match any Match. Ignoring");
@@ -115,4 +117,20 @@ fn extension_matches(config: &Config, path: &std::path::Path) -> bool {
         }
     }
     false
+}
+
+fn process_file<'a, P, Q>(from: P, to: Q, current_match: &'a Match) -> Result<(), std::io::Error>
+where
+    P: AsRef<Path>,
+    Q: AsRef<Path>,
+{
+    match current_match.action {
+        Action::Move => std::fs::rename(from, to),
+        Action::Link => if !std::path::Path::new(to.as_ref()).exists() {
+            std::os::unix::fs::symlink(from, to)
+        } else {
+            println!("File is already present at destination. No linking done");
+            Ok(())
+        },
+    }
 }

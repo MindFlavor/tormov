@@ -1,12 +1,12 @@
 [package]
 name        = "tormov"
 description = "TORrent MOVer, a simple tool to move regexed folders with no incomplete files"
-version     = "0.1.1"
+version     = "0.2.0"
 authors     = ["Francesco Cogno <francesco.cogno@outlook.com>"]
 license     = "MIT"
 
 [dependencies]
 regex        = "0.2.2"
-serde        = "1.0.14"
-serde_json   = "1.0.3"
-serde_derive = "1.0.14"
+serde        = "1.0.15"
+serde_json   = "1.0.4"
+serde_derive = "1.0.15"
