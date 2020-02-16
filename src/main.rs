@@ -4,10 +4,10 @@ extern crate serde_json;
 
 extern crate regex;
 
-use std::fs;
-use std::path::Path;
 use regex::Regex;
 use std::env;
+use std::fs;
+use std::path::Path;
 
 pub mod config;
 use config::{Action, Config, Match};
@@ -28,7 +28,6 @@ fn main() {
 
     scan_first_level(&config, folder).unwrap();
 }
-
 
 fn scan_first_level(config: &Config, folder: &str) -> Result<(), std::io::Error> {
     for de_ in fs::read_dir(folder)? {
@@ -119,6 +118,16 @@ fn extension_matches(config: &Config, path: &std::path::Path) -> bool {
     false
 }
 
+#[cfg(unix)]
+fn link<P: AsRef<Path>, Q: AsRef<Path>>(from: P, to: Q) -> std::io::Result<()> {
+    std::os::unix::fs::symlink(from, to)
+}
+
+#[cfg(windows)]
+fn link<P: AsRef<Path>, Q: AsRef<Path>>(from: P, to: Q) -> std::io::Result<()> {
+    std::os::windows::fs::symlink(from, to)
+}
+
 fn process_file<'a, P, Q>(from: P, to: Q, current_match: &'a Match) -> Result<(), std::io::Error>
 where
     P: AsRef<Path>,
@@ -126,11 +135,13 @@ where
 {
     match current_match.action {
         Action::Move => std::fs::rename(from, to),
-        Action::Link => if !std::path::Path::new(to.as_ref()).exists() {
-            std::os::unix::fs::symlink(from, to)
-        } else {
-            println!("File is already present at destination. No linking done");
-            Ok(())
-        },
+        Action::Link => {
+            if !std::path::Path::new(to.as_ref()).exists() {
+                link(from, to)
+            } else {
+                println!("File is already present at destination. No linking done");
+                Ok(())
+            }
+        }
     }
 }
