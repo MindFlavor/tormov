@@ -4,9 +4,9 @@
 
 [![Crate](https://img.shields.io/crates/v/tormov.svg)](https://crates.io/crates/tormov)  [![cratedown](https://img.shields.io/crates/d/tormov.svg)](https://crates.io/crates/tormov) [![cratelastdown](https://img.shields.io/crates/dv/tormov.svg)](https://crates.io/crates/tormov)
 
-[![tag](https://img.shields.io/github/tag/mindflavor/tormov.svg)](https://github.com/MindFlavor/tormov/tree/v0.2.2)
-[![release](https://img.shields.io/github/release/mindflavor/tormov.svg)](https://github.com/MindFlavor/tormov/tree/v0.2.2)
-[![commitssince](https://img.shields.io/github/commits-since/mindflavor/tormov/v0.2.2.svg)](https://img.shields.io/github/commits-since/mindflavor/tormov/v0.2.2.svg)
+[![tag](https://img.shields.io/github/tag/mindflavor/tormov.svg)](https://github.com/MindFlavor/tormov/tree/v0.3.0)
+[![release](https://img.shields.io/github/release/mindflavor/tormov.svg)](https://github.com/MindFlavor/tormov/tree/v0.3.0)
+[![commitssince](https://img.shields.io/github/commits-since/mindflavor/tormov/v0.3.0.svg)](https://img.shields.io/github/commits-since/mindflavor/tormov/v0.3.0.svg)
 
 ## TORrentMOVer
 
