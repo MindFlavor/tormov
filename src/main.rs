@@ -125,7 +125,7 @@ fn link<P: AsRef<Path>, Q: AsRef<Path>>(from: P, to: Q) -> std::io::Result<()> {
 
 #[cfg(windows)]
 fn link<P: AsRef<Path>, Q: AsRef<Path>>(from: P, to: Q) -> std::io::Result<()> {
-    std::os::windows::fs::symlink(from, to)
+    std::os::windows::fs::symlink_file(from, to)
 }
 
 fn process_file<'a, P, Q>(from: P, to: Q, current_match: &'a Match) -> Result<(), std::io::Error>
